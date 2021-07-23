@@ -33,3 +33,4 @@ tokio = { version = "1", features = ["full"] }
 
 [features]
 util = ["educe/Debug", "hex-literal", "parking_lot"]
+test-evm = []

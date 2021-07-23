@@ -57,3 +57,6 @@ pub mod tracing;
 
 #[cfg(feature = "util")]
 pub mod util;
+
+#[cfg(feature = "test-evm")]
+pub use state::*;

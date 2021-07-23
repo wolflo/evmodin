@@ -74,6 +74,21 @@ impl ExecutionState {
             current_block_cost: 0,
         }
     }
+
+    #[cfg(feature = "test-evm")]
+    pub fn stack_mut(&mut self) -> &mut Stack {
+        &mut self.stack
+    }
+
+    #[cfg(feature = "test-evm")]
+    pub fn memory_mut(&mut self) -> &mut Memory {
+        &mut self.memory
+    }
+
+    #[cfg(feature = "test-evm")]
+    pub fn return_data_mut(&mut self) -> &mut Bytes {
+        &mut self.return_data
+    }
 }
 
 #[cfg(test)]

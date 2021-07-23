@@ -468,6 +468,20 @@ impl AnalyzedCode {
 
         Ok(output)
     }
+
+    #[cfg(feature = "test-evm")]
+    pub async fn execute_with_state_ext<H: Host, T: Tracer>(
+        &self,
+        host: &mut H,
+        tracer: &mut T,
+        state: &mut ExecutionState,
+    ) -> Result<Output, StatusCode> {
+        match self.execute_with_state(host, tracer, state).await {
+            Ok(res) => Ok(Output::from(res)),
+            Err(e) => Err(e)
+        }
+
+    }
 }
 
 struct SuccessfulOutput {
